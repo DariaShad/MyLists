@@ -14,7 +14,7 @@ namespace MyLists
             Length = 0;
         }
 
-        public void Add(int value)
+        public void AddToEnd(int value)
         {
             if (Length < _array.Length)
             {
@@ -22,22 +22,23 @@ namespace MyLists
             }
             _array[Length] = value;
             Length++;
-
-
-            //if (Length < _array.Length)
-            //{
-            //    _array[Length] = value;
-            //    Length++;
-            //}
-            //else
-            //{
-            //    UpSize();
-            //    _array[Length] = value;
-            //    Length++;
-            //}
-
         }
 
+        public void AddToBeginning(int value)
+        {
+            int newLength = _array.Length+1;
+            int[] newArray = new int[newLength];
+            for(int i=0; i<newLength; i++)
+            {
+                _array[i] = newArray[i + 1];
+            }
+            newArray[0] = value;
+        }
+
+        public void AddByIndex(int value)
+        {
+
+        }
         public void Write()
         {
             for(int i=0; i < Length; i++)
@@ -57,5 +58,7 @@ namespace MyLists
             }
             _array = newArray;
         }
+
+
     }
 }
