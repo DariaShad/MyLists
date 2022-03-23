@@ -1,13 +1,23 @@
-﻿using System;
+﻿using MyLists;
 
 namespace program
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
-            int[] massive = new int[5] {1, 2, 3, 4, 5 };
+            ArrayList arrayList = new ArrayList();
+            arrayList.AddToBeginning(10);
+            arrayList.AddToBeginning(1);
+            arrayList.AddToBeginning(25);
+            arrayList.AddToBeginning(56);
+            arrayList.AddToBeginning(7);
+            arrayList.AddToBeginning(10);
+            arrayList.AddToBeginning(100);
             
+            arrayList.Write();
+            arrayList.DeleteByIndexNElements(2, 3);
+            arrayList.Write();
 
         }
     }
