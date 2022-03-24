@@ -13,7 +13,19 @@ namespace MyLists
             _array = new int[10];
             Length = 0;
         }
+        //3 конструктора (пустой, на основе одного элемента, на основе массива )
 
+        public ArrayList(int element) //конструктор
+        {
+            int[] massive = new int[1] { element};
+            _array = massive;
+        }
+
+        public ArrayList(int [] array)
+        {
+            _array = array;
+            Length = array.Length;
+        }
         public void AddToEnd(int value)
         {
             if (Length >= _array.Length)
@@ -225,7 +237,7 @@ namespace MyLists
         {
             
             int minElement = _array[0];
-            for (int i = 0; i < _array.Length; i++)
+            for (int i = 0; i < Length; i++)
             {
                 if (minElement > _array[i])
                 {
@@ -256,7 +268,7 @@ namespace MyLists
         {
             int MinElement = _array[0];
             int index = 0;
-            for (int i = 0; i < _array.Length; i++)
+            for (int i = 0; i < Length; i++)
             {
                 if (MinElement > _array[i])
                 {
@@ -265,6 +277,45 @@ namespace MyLists
                 }
             }
             return index;
+        }
+
+        //19. сортировка по возрастанию
+        public int[] SortAscending()
+        {
+            int tmp = 0;
+            for (int i = 0; i < Length; i++)
+            {
+                for (int j = i; j < Length; j++)
+                {
+                    if (_array[i]> _array[j])
+                    {
+                        tmp = _array[i];
+                        _array[i] = _array[j];
+                        _array[j] = tmp;
+                    }
+                }
+            }
+            return _array;
+        }
+
+        //удаление по значению всех (вернуть кол-во)
+        public int DeleteAllByValue(int value)
+        {
+            int count = 0;
+            for (int i = 0; i < Length; i++)
+            {
+                if (_array[i] == value)
+                {
+                    count++;
+                }
+                else
+                {
+                    _array[i - count] = _array[i];
+                }
+            }
+            Length -= count;
+
+            return count;
         }
         public void Write()
         {
@@ -285,5 +336,49 @@ namespace MyLists
             }
             _array = newArray;
         }
+
+        public override string ToString()
+        {
+            string s = "[";
+
+            for (int i = 0; i < Length; i++)
+            {
+                s += $"{_array[i]} ";
+            }
+            s += "]";
+            return s;
+        }
+
+        public override bool Equals(object obj)
+        {
+            bool isEqual = true;
+
+            if (obj == null || !(obj is ArrayList))
+            {
+                isEqual = false;
+            }
+            else
+            {
+                ArrayList list = (ArrayList)obj;
+
+                if (list.Length != this.Length)
+                {
+                    isEqual = false;
+                }
+                else
+                {
+                    for (int i = 0; i < this.Length; i++)
+                    {
+                        if (list[i] != this[i])
+                        {
+                            isEqual = false;
+                        }
+                    }
+                }
+            }
+            return isEqual;
+        }
+
+
     }
 }

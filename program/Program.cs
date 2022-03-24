@@ -20,13 +20,15 @@ namespace program
 
             //int maxValue=arrayList.FindMax();
             //Console.WriteLine(maxValue);
-            int minValue = arrayList.FindMinElement();
-            Console.WriteLine(minValue);
+            //int minValue = arrayList.FindMinElement();
+            //Console.WriteLine(minValue);
 
             //int indexMaxValue = arrayList.FindIndexMaxElement();
             //Console.WriteLine(indexMaxValue);
             //int indexMinElement = arrayList.FindIndexMinElement();
-            //Console.WriteLine(indexMinElement); //ПУСТЫЕ ЯЧЕЙКИ СЧИТАЕТ ЭЛЕМЕНТАМИ 0
+            //Console.WriteLine(indexMinElement); 
+            int[] sortedMassive = arrayList.SortAscending();
+            Console.WriteLine(sortedMassive);
 
         }
     }
