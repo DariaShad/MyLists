@@ -149,8 +149,123 @@ namespace MyLists
         }
 
         //доступ по индексу 
+        public int this[int index]
+        {
+            get
+            {
+                if (index < 0 || index >= Length)
+                {
+                    throw new IndexOutOfRangeException();
+                }
+                return _array[index];
+            }
+            set
+            {
+                if (index < 0 || index >= Length)
+                {
+                    throw new IndexOutOfRangeException();
+                }
+                _array[index] = value;
+            }
+        }
+
+        //первый индекс по значению (-1 - не нашел)
 
 
+        //изменение по индексу
+        //public int this[int index]
+        //{
+        //    get
+        //    {
+        //        if (index < 0 || index >= Length)
+        //        {
+        //            throw new IndexOutOfRangeException();
+        //        }
+        //        return _array[index];
+        //    }
+        //    set
+        //    {
+        //        if (index < 0 || index >= Length)
+        //        {
+        //            throw new IndexOutOfRangeException();
+        //        }
+        //        _array[index] = value;
+        //    }
+        //}
+
+        //реверс
+        public void Reverse()
+        {
+            int index = 0;
+            int[] newArray = new int[_array.Length];
+            for(int i=_array.Length; i>=0; i--)
+            {
+                newArray[index] = _array[i];
+                index++;
+            }
+            _array = newArray;
+        }
+
+        //поиск значения максимального элемента
+        public int FindMax()
+        {
+            int maxElement = _array[0];
+            for (int i = 0; i < _array.Length; i++)
+            {
+                if (maxElement < _array[i])
+                {
+                    maxElement = _array[i];
+                }
+            }
+            return maxElement;
+        }
+
+        //поиск значения минимального элемента
+        public int FindMinElement()
+        {
+            
+            int minElement = _array[0];
+            for (int i = 0; i < _array.Length; i++)
+            {
+                if (minElement > _array[i])
+                {
+                    minElement = _array[i];
+                }
+            }
+            return minElement;
+        }
+
+        //поиск индекс максимального элемента
+        public int FindIndexMaxElement()
+        {
+            int MaxElement = _array[0];
+            int index = 0;
+            for (int i = 0; i < _array.Length; i++)
+            {
+                if (MaxElement < _array[i])
+                {
+                    MaxElement = _array[i];
+                    index = i;
+                }
+            }
+            return index;
+        }
+
+        //поиск индекс минимального элемента
+        public int FindIndexMinElement()
+        {
+            int MinElement = _array[0];
+            int index = 0;
+            for (int i = 0; i < _array.Length; i++)
+            {
+                if (MinElement > _array[i])
+                {
+                    MinElement = _array[i];
+                    index = i;
+                }
+            }
+            return index;
+        }
         public void Write()
         {
             for (int i = 0; i < Length; i++)
