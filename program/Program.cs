@@ -30,6 +30,7 @@ namespace program
             int[] sortedMassive = arrayList.SortAscending();
             Console.WriteLine(sortedMassive);
             arrayList.DeleteByIndex(2);
+            arrayList.DeleteAllByValue(2);
 
         }
     }
