@@ -29,6 +29,7 @@ namespace program
             //Console.WriteLine(indexMinElement); 
             int[] sortedMassive = arrayList.SortAscending();
             Console.WriteLine(sortedMassive);
+            arrayList.DeleteByIndex(2);
 
         }
     }
