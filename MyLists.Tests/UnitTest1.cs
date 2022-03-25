@@ -40,7 +40,25 @@ namespace MyLists.Tests
         [TestCaseSource(typeof(DeleteLastTestSource))]
         public void DeleteLastTest(ArrayList list, ArrayList expectedList)
         {
+            ArrayList actualList = list;
+            Assert.AreEqual(expectedList, actualList);
+        }
+
+        [TestCaseSource(typeof(AddByIndexTestSource))]
+        public void AddByIndexTest(int value, int index, ArrayList list, ArrayList expectedList)
+        {
+            list.AddByIndex(value, index);
+            ArrayList actualList = list;
+            Assert.AreEqual(expectedList, actualList);
             
+        }
+
+        [TestCaseSource(typeof(DeleteFirstTestSource))]
+        public void DeleteFirstTest(ArrayList list, ArrayList expectedList)
+        {
+            list.DeleteFirst();
+            ArrayList actualList = list;
+            Assert.AreEqual(expectedList, list);
         }
     }
 }
