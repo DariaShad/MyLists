@@ -18,6 +18,11 @@ namespace program
             
             arrayList.Write();
 
+            arrayList.SortDescending();
+            arrayList.Write();
+
+
+
             //int maxValue=arrayList.FindMax();
             //Console.WriteLine(maxValue);
             //int minValue = arrayList.FindMinElement();
@@ -27,9 +32,7 @@ namespace program
             //Console.WriteLine(indexMaxValue);
             //int indexMinElement = arrayList.FindIndexMinElement();
             //Console.WriteLine(indexMinElement); 
-            int[] sortedMassive = arrayList.SortAscending();
-            Console.WriteLine(sortedMassive);
-            arrayList.DeleteByIndex(2);
+
 
         }
     }
