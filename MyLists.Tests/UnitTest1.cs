@@ -33,23 +33,21 @@ namespace MyLists.Tests
         public void AddToBeginningTest(int value, ArrayList list, ArrayList expectedList)
         {
             list.AddToBeginning(value);
-            ArrayList actualList = list;
-            Assert.AreEqual(expectedList, actualList);
+            Assert.AreEqual(list, expectedList );
         }
         
         [TestCaseSource(typeof(DeleteLastTestSource))]
         public void DeleteLastTest(ArrayList list, ArrayList expectedList)
         {
-            ArrayList actualList = list;
-            Assert.AreEqual(expectedList, actualList);
+            list.DeleteLast();
+            Assert.AreEqual(expectedList, list);
         }
 
         [TestCaseSource(typeof(AddByIndexTestSource))]
         public void AddByIndexTest(int value, int index, ArrayList list, ArrayList expectedList)
         {
             list.AddByIndex(value, index);
-            ArrayList actualList = list;
-            Assert.AreEqual(expectedList, actualList);
+            Assert.AreEqual(expectedList, list);
             
         }
 

@@ -9,10 +9,10 @@ namespace MyLists.Tests
     {
         public IEnumerator GetEnumerator()
         {
-            //int value = 1;
-            ArrayList actualList = new ArrayList(new int[] { 2, 3, 4, 5 });
+            int value = 1;
+            ArrayList list = new ArrayList(new int[] { 2, 3, 4, 5 });
             ArrayList expectedList = new ArrayList(new int[] { 1, 2, 3, 4, 5 });
-            yield return  new object[] { expectedList, actualList };
+            yield return  new object[] { value, list, expectedList,};
         }
     }
 }

@@ -26,6 +26,7 @@ namespace MyLists
             _array = array;
             Length = array.Length;
         }
+        // 1. Добавление значения в конец
         public void AddToEnd(int value)
         {
             if (Length >= _array.Length)
@@ -36,8 +37,32 @@ namespace MyLists
             Length++;
         }
 
+        // 2. Добавление значения в начало
+        public void AddToBeginning(int value)
+        {
+            if (Length >= _array.Length)
+            {
+                UpSize();
+            }
+            int[] newArray = new int[_array.Length];
+
+            for (int i = 0; i < Length; i++)
+            {
+                newArray[i + 1] = _array[i];
+            }
+
+            newArray[0] = value;
+            _array = newArray;
+            Length++;
+        }
+
+        // 3. Добавление значения по индексу
         public void AddByIndex(int value, int index)
         {
+            if(index>Length)
+            {
+                throw new Exception("Index should be less than the length of the list");
+            }
             if (index >= Length)
             {
                 return;
@@ -67,26 +92,8 @@ namespace MyLists
             Length++;
         }
 
-
-        public void AddToBeginning(int value)
-        {
-            if (Length >= _array.Length)
-            {
-                UpSize();
-            }
-            int[] newArray = new int[_array.Length];
-
-            for (int i = 0; i < Length; i++)
-            {
-                newArray[i + 1] = _array[i];
-            }
-
-            newArray[0] = value;
-            _array = newArray;
-            Length++;
-        }
-
-        //удаление из конца одного элемента
+       
+        // 4. удаление из конца одного элемента
 
         public void DeleteLast()
         {
@@ -97,7 +104,7 @@ namespace MyLists
             Length--;
         }
 
-        //удаление из начала одного элемента
+        // 5. удаление из начала одного элемента
         public void DeleteFirst()
         {
             int[] newArray = new int[_array.Length];
@@ -109,7 +116,7 @@ namespace MyLists
             Length--;
         }
 
-        //удаление по индексу одного элемента
+        // 6. удаление по индексу одного элемента
         public void DeleteByIndex(int index)
         {
             int[] newArray = new int[_array.Length];
@@ -127,7 +134,7 @@ namespace MyLists
             Length--;
         }
 
-        //удаление из конца N элементов
+        // 7. удаление из конца N элементов
         public void DeleteFromEndNElements(int N)
         {
             for(int i=0; i<N; i++)
@@ -136,7 +143,16 @@ namespace MyLists
             }
         }
 
-        //удаление по индексу N элементов
+        // 8.  удаление из начала N элементов
+        public void DeleteFromBeginningNElement(int N)
+        {
+            for (int i = 0; i < N; i++)
+            {
+                this.DeleteFirst();
+            }
+        }
+
+        // 9. удаление по индексу N элементов
         public void DeleteByIndexNElements(int index, int amount)
         {
             int[] newArray = new int[_array.Length];
@@ -154,13 +170,9 @@ namespace MyLists
             Length-=amount;
         }
 
-        //вернуть длину
-        public void ReturnLength()
-        {
-           
-        }
+        //10. вернуть длину (свойство)
 
-        //доступ по индексу 
+        // 11. доступ по индексу, 13. изменение по индексу
         public int this[int index]
         {
             get
@@ -181,36 +193,28 @@ namespace MyLists
             }
         }
 
-        //первый индекс по значению (-1 - не нашел)
+        // 12. первый индекс по значению (-1 - не нашел)
 
+        public int FindIndexByValue(int value)
+        {
+            int resultNotFound = -1;
+            for(int i=0; i<Length; i++)
+            {
+                if(_array[i]==value)
+                {
+                    return i;
+                }
+            }
 
-        //изменение по индексу
-        //public int this[int index]
-        //{
-        //    get
-        //    {
-        //        if (index < 0 || index >= Length)
-        //        {
-        //            throw new IndexOutOfRangeException();
-        //        }
-        //        return _array[index];
-        //    }
-        //    set
-        //    {
-        //        if (index < 0 || index >= Length)
-        //        {
-        //            throw new IndexOutOfRangeException();
-        //        }
-        //        _array[index] = value;
-        //    }
-        //}
+            return resultNotFound;
+        }
 
-        //реверс
+        // 14. реверс
         public void Reverse()
         {
             int index = 0;
             int[] newArray = new int[_array.Length];
-            for(int i=_array.Length; i>=0; i--)
+            for(int i=Length-1; i>=0; i--)
             {
                 newArray[index] = _array[i];
                 index++;
@@ -218,7 +222,7 @@ namespace MyLists
             _array = newArray;
         }
 
-        //поиск значения максимального элемента
+        // 15. поиск значения максимального элемента
         public int FindMax()
         {
             int maxElement = _array[0];
@@ -232,7 +236,7 @@ namespace MyLists
             return maxElement;
         }
 
-        //поиск значения минимального элемента
+        // 16. поиск значения минимального элемента
         public int FindMinElement()
         {
             
@@ -247,7 +251,7 @@ namespace MyLists
             return minElement;
         }
 
-        //поиск индекс максимального элемента
+        // 17. поиск индекс максимального элемента
         public int FindIndexMaxElement()
         {
             int MaxElement = _array[0];
@@ -263,7 +267,7 @@ namespace MyLists
             return index;
         }
 
-        //поиск индекс минимального элемента
+        // 18. поиск индекс минимального элемента
         public int FindIndexMinElement()
         {
             int MinElement = _array[0];
@@ -280,7 +284,7 @@ namespace MyLists
         }
 
         //19. сортировка по возрастанию
-        public int[] SortAscending()
+        public void SortAscending()
         {
             int tmp = 0;
             for (int i = 0; i < Length; i++)
@@ -295,10 +299,45 @@ namespace MyLists
                     }
                 }
             }
-            return _array;
         }
 
-        //удаление по значению всех (вернуть кол-во)
+        //20. сортировка по убыванию
+        public void SortDescending()
+        {
+            int tmp = 0;
+            for (int i = 0; i < Length; i++)
+            {
+                for (int j = i; j < Length; j++)
+                {
+                    if (_array[i] < _array[j])
+                    {
+                        tmp = _array[i];
+                        _array[i] = _array[j];
+                        _array[j] = tmp;
+                    }
+                }
+            }
+        }
+
+        //21. удаление по значению первого элемента (вернуть индекс)
+        public int DeleteByValueReturnIndex(int value)
+        {
+            int index = 0;
+            int[] newArray = new int[Length];
+            for (int i = 0; i < Length; i++)
+            {
+                if (_array[i]==value)
+                {
+                   index = i;
+                    i++;
+                }
+                newArray[i] = _array[i];
+            }
+            _array = newArray;
+            return index;
+        }
+
+        // 22. удаление по значению всех (вернуть кол-во)
         public int DeleteAllByValue(int value)
         {
             int count = 0;
@@ -317,6 +356,8 @@ namespace MyLists
 
             return count;
         }
+
+        // 23. 3 конструктора (наверху написаны)
         public void Write()
         {
             for (int i = 0; i < Length; i++)
