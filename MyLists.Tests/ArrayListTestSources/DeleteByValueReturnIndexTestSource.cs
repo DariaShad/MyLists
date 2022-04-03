@@ -9,8 +9,8 @@ namespace MyLists.Tests.ArrayListTestSources
     {
         public IEnumerator GetEnumerator()
         {
-            int expectedIndex = 5;
-            int value = 6;
+            int expectedIndex = 3;
+            int value = 4;
             ArrayList list = new ArrayList(new int[] { 1, 2, 3, 4, 5, 6 });
             yield return new object[] { value, expectedIndex, list };
         }

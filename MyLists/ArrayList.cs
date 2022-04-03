@@ -367,6 +367,21 @@ namespace MyLists
             Console.WriteLine();
         }
 
+        //24.добавление списка (вашего самодельного) в конец
+
+        public void AddList(ArrayList list)
+        {
+            if (list is null)
+            {
+                throw new NullReferenceException();
+            }
+
+            for (int i = 0; i < list.Length; i++)
+            {
+                this.AddToEnd(list[i]);
+            }
+        }
+
         private void UpSize()
         {
             int newLength = (int)(_array.Length * 1.5d + 1);
