@@ -382,6 +382,54 @@ namespace MyLists
             }
         }
 
+        //25. добавление списка в начало
+        public void AddListToBeginning(ArrayList list)
+        {
+            int newLength = Length + list.Length;
+            int[] newArray = new int[newLength];
+            for (int i = 0; i < list.Length; i++)
+            {
+                newArray[i] = list[i];
+            }
+
+            for (int i = 0; i < Length; i++)
+            {
+                newArray[i + list.Length] = _array[i];
+            }
+
+            _array = newArray;
+            Length = newArray.Length;
+        }
+    
+        //26.добавление списка по индексу
+        public void AddListByIndex(ArrayList list, int index)
+        {
+            if (list.Length == 0 || _array.Length == 0)
+            {
+                throw new Exception("Empty list!");
+            }
+            if (index < 0 || index > _array.Length)
+            {
+                throw new IndexOutOfRangeException("index");
+            }
+            int newLength = Length + list.Length;
+            int[] newArray = new int[newLength];
+            for (int i = 0; i < index; i++)
+            {
+                newArray[i] = _array[i];
+            }
+            for (int i = 0; i < list.Length; i++)
+            {
+                newArray[i + index] = list[i];
+            }
+            for (int i = 0; i < Length - index; i++)
+            {
+                newArray[i + index + list.Length] = _array[i + index];
+            }
+            _array = newArray;
+            Length = newArray.Length;
+        }
+
         private void UpSize()
         {
             int newLength = (int)(_array.Length * 1.5d + 1);
